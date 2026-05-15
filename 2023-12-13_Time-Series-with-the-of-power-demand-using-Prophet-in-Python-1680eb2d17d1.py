@@ -5,9 +5,7 @@
 
 from data_io import read_csv
 from prophet import Prophet
-from sklearn.metrics import mean_squared_error, mean_absolute_error
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 import plotly.graph_objs as go
 import seaborn as sns
@@ -36,7 +34,7 @@ def timeseries(df, x, yhat, lower, upper, actual, title_name, save = False):
             x=df[x],
             y=df['yhat'],
             mode='lines',
-            line=dict(color='rgb(31, 119, 180)'),
+            line={"color": 'rgb(31, 119, 180)'},
             showlegend=False
         ),
         go.Scatter(
@@ -44,16 +42,16 @@ def timeseries(df, x, yhat, lower, upper, actual, title_name, save = False):
             x=df[x],
             y=df[upper],
             mode='lines',
-            marker=dict(color="#444"),
-            line=dict(width=0),
+            marker={"color": "#444"},
+            line={"width": 0},
             showlegend=False
         ),
         go.Scatter(
             name='Lower Bound',
             x=df[x],
             y=df[lower],
-            marker=dict(color="#444"),
-            line=dict(width=0),
+            marker={"color": "#444"},
+            line={"width": 0},
             mode='lines',
             fillcolor='rgba(68, 68, 68, 0.3)',
             fill='tonexty',
