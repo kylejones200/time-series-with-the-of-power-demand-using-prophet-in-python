@@ -1,6 +1,5 @@
 # Description: Short example for Time Series with the of power demand using Prophet in Python.
 
-
 import matplotlib.pyplot as plt
 import pandas as pd
 import plotly.graph_objs as go
@@ -58,9 +57,7 @@ def timeseries(df, x, yhat, lower, upper, actual, title_name, save=False):
             ),
         ]
     )
-    fig.update_layout(
-        yaxis_title="Production Rate", title=f"{title_name}", hovermode="x"
-    )
+    fig.update_layout(yaxis_title="Production Rate", title=f"{title_name}", hovermode="x")
     fig.add_trace(
         go.Scatter(
             x=actual["ds"],
@@ -70,9 +67,7 @@ def timeseries(df, x, yhat, lower, upper, actual, title_name, save=False):
             showlegend=False,
         )
     )
-
     fig.show()
-
     if save:
         fig.write_html(f"{title_name}.html")
 
@@ -87,7 +82,6 @@ timeseries(
     title_name="Ercot",
     save=True,
 )
-
 
 df["ERCOT"].plot(style=".", figsize=(15, 5), title="ERCOT")
 plt.show()
@@ -107,7 +101,6 @@ def create_features(df, label=None):
     df["dayofyear"] = df["date"].dt.dayofyear
     df["dayofmonth"] = df["date"].dt.day
     df["weekofyear"] = df["date"].dt.isocalendar().week
-
     X = df[
         [
             "hour",
@@ -153,15 +146,12 @@ ercot_test.rename(columns={"ERCOT": "TEST SET"}).join(
     ercot_train.rename(columns={"ERCOT": "TRAINING SET"}), how="outer"
 ).plot(figsize=(15, 5), title="Ercot demand", style=".")
 
-
 ercot_train.reset_index().rename(columns={"date": "ds", "ERCOT": "y"}).head()
 
 model = Prophet()
 model.fit(ercot_train.reset_index().rename(columns={"date": "ds", "ERCOT": "y"}))
 
-ercot_test_fcst = model.predict(
-    df=ercot_test.reset_index().rename(columns={"date": "ds"})
-)
+ercot_test_fcst = model.predict(df=ercot_test.reset_index().rename(columns={"date": "ds"}))
 
 # Plot the forecast
 f, ax = plt.subplots(1)
