@@ -1,0 +1,9 @@
+[package]
+name = "time_series_with_the_of_power_demand_using_prophet_in_python_core"
+description = "Fourier seasonality features for hourly demand"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"

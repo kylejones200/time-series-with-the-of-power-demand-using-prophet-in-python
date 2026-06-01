@@ -1,0 +1,13 @@
+[package]
+name = "time_series_with_the_of_power_demand_using_prophet_in_python_bench"
+description = "Standalone Rust benchmark (no Python)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "bench"
+path = "src/main.rs"
+
+[dependencies]
+time_series_with_the_of_power_demand_using_prophet_in_python_core = { path = "../core" }

@@ -1,0 +1,15 @@
+[package]
+name = "time_series_with_the_of_power_demand_using_prophet_in_python_rs"
+description = "Python bindings (PyO3) for time_series_with_the_of_power_demand_using_prophet_in_python_core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+name = "time_series_with_the_of_power_demand_using_prophet_in_python_rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+time_series_with_the_of_power_demand_using_prophet_in_python_core = { path = "../core" }
+pyo3 = { version = "0.28", features = ["extension-module"] }
+numpy = "0.28"
